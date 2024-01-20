@@ -25,28 +25,37 @@ const Hero = () => {
             based in Pune, India
           </p>
           <div>
-          <button className={`${styles.buttonStyle} mt-10`}>
-            Download CV
-          </button>
-        </div>
-
-          
-      </div>
-
-      <div className="flex-1 lg:flex justify-end items-end">
-            <img
-              src={heroImage}
-              className="rounded-full lg:w-1/2"
-              alt="hero image"
-            />
+            <button className="bg-gradient-to-r from-[#754ad1] to-[#a795cc] text-white hover:bg-[#2e195c] transition duration-300 ease-in-out py-4 px-8 mt-4 rounded-full">
+              Download CV
+            </button>
+          </div>
+          <div>
+            {/* add social media icons like instagram, gmail, linkedin, github in this div */}
+            <div className='flex mt-4 gap-2'>
+              <a href="https://www.linkedin.com/in/shubham-jadhav-096a61190/" target="_blank" rel="noreferrer">
+                <img src="https://img.icons8.com/color/24/000000/linkedin.png" alt="linkedin" />
+              </a>
+              <a href="https://www.instagram.com/shubham_jadhav/" target="_blank" rel="noreferrer">
+                <img src="https://img.icons8.com/fluency/24/000000/instagram-new.png" alt="instagram" />
+              </a>
+              <a href="https://www.github.com/shubham-jadhav" target="_blank" rel="noreferrer">
+                <img src="https://img.icons8.com/fluency/24/000000/github.png" alt="github" />
+              </a>
+              <a href="https://www.gmail.com" target="_blank" rel="noreferrer">
+                <img src="https://img.icons8.com/fluency/24/000000/gmail.png" alt="gmail" />
+              </a>
+            </div>
           </div>
 
+
         </div>
 
-      <ComputersCanvas />
+      </div>
+
+      {/* <ComputersCanvas /> */}
 
       <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'>
-        
+
         <a href='#about'>
           <div className='w-[35px] h-[64px] rounded-t-3xl border-4 border-secondary flex justify-center items-start p-2'>
             <motion.div
@@ -66,6 +75,9 @@ const Hero = () => {
     </section>
   );
 };
+
+
+
 
 
 export default Hero;
