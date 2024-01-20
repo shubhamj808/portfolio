@@ -26,6 +26,8 @@ import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
+import vm from "./company/vm.jpeg";
+import cybage from "./company/cybage.jpeg";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
@@ -60,6 +62,9 @@ export {
   shopify,
   starbucks,
   tesla,
+  vm,
+  cybage,
+
   carrent,
   jobit,
   tripguide,
