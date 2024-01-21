@@ -9,7 +9,12 @@ const Hero = () => {
     "logo-linkedin",
     "logo-github",
   ];
-
+  const social_media_links = [
+    "https://www.instagram.com/shubham_jadhav8/",
+    "mailto:shubhamjadhav123.sj@gmail.com",
+    "https://www.linkedin.com/in/shubham-jadhav-2429421b3/",
+    "https://github.com/shubhamj808",
+  ];
   return (
     <section className={`relative w-full h-screen mx-auto`}>
       <div
@@ -34,10 +39,11 @@ const Hero = () => {
             </button>
           </div>
           <div className="mt-8 text-3xl flex items-center md:justify-start justify-center gap-5">
-            {social_media?.map((icon) => (
+            {social_media?.map((icon, index) => (
               <div
                 key={icon}
                 className="text-gray-600 hover:text-white cursor-pointer "
+                onClick={() => window.open(social_media_links[index])}
               >
                 <ion-icon name={icon}></ion-icon>
               </div>
