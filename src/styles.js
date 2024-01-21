@@ -13,7 +13,7 @@ const styles = {
   sectionSubText:
     "sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider",
   buttonStyle:
-   "bg-indigo-500 shadow-lg shadow-indigo-500/50 text-white font-bold py-2 px-4 rounded hover:text-gray-500"
+   "bg-gradient-to-r from-[#754ad1] to-[#a795cc] text-white hover:bg-[#2e195c] cursor-pointer transition duration-300 ease-in-out py-4 px-8 mt-4 rounded-full"
 };
 
 export { styles };

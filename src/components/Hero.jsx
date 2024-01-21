@@ -1,11 +1,15 @@
 import { motion } from "framer-motion";
 
-import {heroImage} from "../assets"
-
 import { styles } from "../styles";
-import { ComputersCanvas } from "./canvas";
 
 const Hero = () => {
+  const social_media = [
+    "logo-instagram",
+    "mail",
+    "logo-linkedin",
+    "logo-github",
+  ];
+
   return (
     <section className={`relative w-full h-screen mx-auto`}>
       <div
@@ -25,26 +29,19 @@ const Hero = () => {
             based in Pune, India
           </p>
           <div>
-            <button className="bg-gradient-to-r from-[#754ad1] to-[#a795cc] text-white hover:bg-[#2e195c] transition duration-300 ease-in-out py-4 px-8 mt-4 rounded-full">
+            <button className={`${styles.buttonStyle}`}>
               Download CV
             </button>
           </div>
-          <div>
-            {/* add social media icons like instagram, gmail, linkedin, github in this div */}
-            <div className='flex mt-4 gap-2'>
-              <a href="https://www.linkedin.com/in/shubham-jadhav-096a61190/" target="_blank" rel="noreferrer">
-                <img src="https://img.icons8.com/color/24/000000/linkedin.png" alt="linkedin" />
-              </a>
-              <a href="https://www.instagram.com/shubham_jadhav/" target="_blank" rel="noreferrer">
-                <img src="https://img.icons8.com/fluency/24/000000/instagram-new.png" alt="instagram" />
-              </a>
-              <a href="https://www.github.com/shubham-jadhav" target="_blank" rel="noreferrer">
-                <img src="https://img.icons8.com/fluency/24/000000/github.png" alt="github" />
-              </a>
-              <a href="https://www.gmail.com" target="_blank" rel="noreferrer">
-                <img src="https://img.icons8.com/fluency/24/000000/gmail.png" alt="gmail" />
-              </a>
-            </div>
+          <div className="mt-8 text-3xl flex items-center md:justify-start justify-center gap-5">
+            {social_media?.map((icon) => (
+              <div
+                key={icon}
+                className="text-gray-600 hover:text-white cursor-pointer "
+              >
+                <ion-icon name={icon}></ion-icon>
+              </div>
+            ))}
           </div>
 
 
