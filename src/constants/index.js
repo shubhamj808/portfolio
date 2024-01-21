@@ -1,3 +1,4 @@
+import { Html } from "@react-three/drei";
 import {
   mobile,
   backend,
@@ -16,6 +17,15 @@ import {
   prometheus,
   elastic,
   terraform,
+  spring,
+  argocd,
+  jenkins,
+  tailwind,
+  mysql,
+  grafana,
+  html,
+  css,
+  postgres,
 
   meta,
   starbucks,
@@ -36,9 +46,14 @@ export const navLinks = [
     title: "Work",
   },
   {
+    id: "skills",
+    title: "Skills",
+  },
+  {
     id: "contact",
     title: "Contact",
   },
+  
 ];
 
 const services = [
@@ -74,8 +89,29 @@ const technologies = [
     icon: kubernetes,
   },
   {
+    name: "ArgoCD",
+    icon: argocd,
+  },
+  {
     name: "Terraform",
     icon: terraform,
+  },
+  {
+    name: "Tailwind CSS",
+    icon: tailwind,
+  },
+  {
+    name: "MySQL",
+    icon: mysql,
+  },
+  {
+    name: "Grafana",
+    icon: grafana,
+  },
+
+  {
+    name: "Jenkins",
+    icon: jenkins,
   },
   {
     name: "Prometheus",
@@ -102,6 +138,10 @@ const technologies = [
     name: "git",
     icon: git,
   },
+  {
+    name: "Spring boot",
+    icon: spring,
+  },
   
   {
     name: "Java",
@@ -110,6 +150,61 @@ const technologies = [
   {
     name: ".NET",
     icon: dotnet,
+  },
+];
+
+const tools = [
+  {
+    title: "Frontend",
+    skills: [
+      {
+        name: "ReactJS",
+        icon: reactjs,
+      },
+      {
+        name: "HTML",
+        icon: html,
+      },
+      {
+        name: "CSS",
+        icon: css,
+      },
+      {
+        name: "Tailwind CSS",
+        icon: tailwind,
+      },
+
+    ],
+  },
+
+  {
+    title: "Backend",
+    skills: [
+      {
+        name: "Spring Boot",
+        icon: spring,
+      },
+      {
+        name: "MySQL",
+        icon: mysql,
+      },
+      {
+        name: "MongoDB",
+        icon: mongodb,
+      },
+      {
+        name: "PostgreSQL",
+        icon: postgres,
+      },
+      {
+        name: "dotnet",
+        icon: dotnet,
+      },
+      {
+        name: "Java",
+        icon: java,
+      }
+    ],
   },
 ];
 
@@ -261,4 +356,4 @@ const projects = [
   },
 ];
 
-export { services, technologies, experiences, testimonials, projects };
+export { services, tools, technologies, experiences, testimonials, projects };
