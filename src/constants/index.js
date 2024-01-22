@@ -186,36 +186,6 @@ const tools = [
 
     ],
   },
-
-  {
-    title: "Backend",
-    skills: [
-      {
-        name: "Spring Boot",
-        icon: spring,
-      },
-      {
-        name: "MySQL",
-        icon: mysql,
-      },
-      {
-        name: "MongoDB",
-        icon: mongodb,
-      },
-      {
-        name: "PostgreSQL",
-        icon: postgres,
-      },
-      {
-        name: "dotnet",
-        icon: dotnet,
-      },
-      {
-        name: "Java",
-        icon: java,
-      }
-    ],
-  },
   {
     title: "CI/CD",
     skills: [
@@ -274,7 +244,36 @@ const tools = [
         icon: terraform,
       },
     ],
-  }
+  },
+  {
+    title: "Backend",
+    skills: [
+      {
+        name: "Spring Boot",
+        icon: spring,
+      },
+      {
+        name: "MySQL",
+        icon: mysql,
+      },
+      {
+        name: "MongoDB",
+        icon: mongodb,
+      },
+      {
+        name: "PostgreSQL",
+        icon: postgres,
+      },
+      {
+        name: "dotnet",
+        icon: dotnet,
+      },
+      {
+        name: "Java",
+        icon: java,
+      }
+    ],
+  },
 ];
 
 const experiences = [

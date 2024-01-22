@@ -5,43 +5,31 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { tools } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { fadeIn, textVariant } from "../utils/motion";
+import { fadeIn, textVariant, zoomIn } from "../utils/motion";
 import { t } from "maath/dist/misc-7d870b3c.esm";
 
 const ToolsCard = ({ index, title, skills }) => (
-  <Tilt className='xs:w-[250px] w-full'>
+  <Tilt className='flex flex-wrap'>
     <motion.div
-      variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-      className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
+      variants={zoomIn(index * 0.5, 0.75)}
+      className='w-full max-w-md green-pink-gradient p-[1px] rounded-[20px] shadow-card'
     >
       <div
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly flex-col'
+        id="skill"
+        className='bg-tertiary rounded-[20px] p-10 md:max-w-400 md:p-10 sm:max-w-330 sm:p-10'
       >
-
-          <h3 className='text-white text-[20px] font-bold text-center'>
+          <h3 className='text-white font-bold text-[24px] text-center'>
             {title}
           </h3>
 
-
-          <div className="relative flex justify-center flex-wrap gap-12 mb-20">
-             
+          <div id="skillList" className="flex justify-center flex-wrap gap-2 m-2">
               {skills.map((skill, index) => (
-                <div className="text-base font-normal text-[#80colorThemeTextPrimary] border border-[#80colorThemeTextPrimary] rounded-lg p-3 md:text-sm md:p-2 lg:p-1 flex items-center justify-center gap-2 md:gap-4" key={index}>
+                <div id="skillItem" className="text-[13px] font-normal text-white border rounded-xl flex items-center justify-center gap-2 md:font-normal md:p-8 sm:font-normal sm:p-6" key={index}>
                   <img className="w-6 h-6" src={skill.icon} alt={skill.icon}></img>
                   <span>{skill.name}</span>
                 </div>
               ))}
-            
-            
           </div>
-
-
-
       </div>
     </motion.div>
   </Tilt>
@@ -57,7 +45,7 @@ const Skills = () => {
           </motion.div>
 
           {/* <div className='relative flex items-center gap-10'> */}
-          <div className='overflow-x-scroll relative flex items-center gap-10'>
+          <div id="skillsContainer" className='w-full flex flex-wrap mt-7 justify-center gap-7'>
               {tools.map((tool, index) => (
                 <ToolsCard key={index} title={tool.title} skills={tool.skills} />
               ))}
