@@ -20,7 +20,7 @@ const ToolsCard = ({ index, title, skills }) => (
           scale: 1,
           speed: 450,
         }}
-        className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly items-center flex-col'
+        className='bg-tertiary rounded-[20px] py-5 px-12 min-h-[280px] flex justify-evenly flex-col'
       >
 
           <h3 className='text-white text-[20px] font-bold text-center'>
@@ -28,13 +28,16 @@ const ToolsCard = ({ index, title, skills }) => (
           </h3>
 
 
-          <div className="flex justify-center flex-wrap gap-12 mb-20">
-            {skills.map((skill, index) => (
-              <div className="text-base font-normal text-[#80colorThemeTextPrimary] border border-[#80colorThemeTextPrimary] rounded-lg p-3 md:text-sm md:p-2 lg:p-1 flex items-center justify-center gap-2 md:gap-4" key={index}>
-                <img className="w-6 h-6" src={skill.icon} alt={skill.icon}></img>
-                <span>{skill.name}</span>
-              </div>
-            ))}
+          <div className="relative flex justify-center flex-wrap gap-12 mb-20">
+             
+              {skills.map((skill, index) => (
+                <div className="text-base font-normal text-[#80colorThemeTextPrimary] border border-[#80colorThemeTextPrimary] rounded-lg p-3 md:text-sm md:p-2 lg:p-1 flex items-center justify-center gap-2 md:gap-4" key={index}>
+                  <img className="w-6 h-6" src={skill.icon} alt={skill.icon}></img>
+                  <span>{skill.name}</span>
+                </div>
+              ))}
+            
+            
           </div>
 
 
@@ -53,10 +56,11 @@ const Skills = () => {
             <h2 className={`${styles.sectionHeadText} text-center`}>Skills.</h2>
           </motion.div>
 
-          <div className='mt-20 flex flex-wrap gap-10'>
-            {tools.map((tool, index) => (
-              <ToolsCard key={index} title={tool.title} skills={tool.skills} />
-            ))}
+          {/* <div className='relative flex items-center gap-10'> */}
+          <div className='overflow-x-scroll relative flex items-center gap-10'>
+              {tools.map((tool, index) => (
+                <ToolsCard key={index} title={tool.title} skills={tool.skills} />
+              ))}
           </div>
     
         </>

@@ -26,6 +26,8 @@ import {
   html,
   css,
   postgres,
+  githubActions,
+  azureDevops,
 
   meta,
   starbucks,
@@ -151,6 +153,14 @@ const technologies = [
     name: ".NET",
     icon: dotnet,
   },
+  {
+    name: "Github Actions",
+    icon: githubActions,
+  },
+  {
+    name: "Azure Devops",
+    icon: azureDevops,
+  },
 ];
 
 const tools = [
@@ -206,6 +216,65 @@ const tools = [
       }
     ],
   },
+  {
+    title: "CI/CD",
+    skills: [
+      {
+        name: "Github Actions",
+        icon: githubActions,
+      },
+      {
+        name: "Jenkins",
+        icon: jenkins,
+      },
+      {
+        name: "ArgoCD",
+        icon: argocd,
+      },
+      {
+        name: "Azure Devops",
+        icon: azureDevops,
+      },
+    ],
+  },
+  {
+    title: "Monitoring",
+    skills: [
+      {
+        name: "Prometheus",
+        icon: prometheus,
+      },
+      {
+        name: "Grafana",
+        icon: grafana,
+      },
+      {
+        name: "Elasticsearch",
+        icon: elastic,
+      },
+    ],
+  },
+  {
+    title: "DevOps",
+    skills: [
+      {
+        name: "Microsoft Azure",
+        icon: azure,
+      },
+      {
+        name: "docker",
+        icon: docker,
+      },
+      {
+        name: "Kubernetes",
+        icon: kubernetes,
+      },
+      {
+        name: "Terraform",
+        icon: terraform,
+      },
+    ],
+  }
 ];
 
 const experiences = [

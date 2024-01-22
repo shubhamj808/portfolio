@@ -28,6 +28,8 @@ import grafana from "./tech/icons8-grafana.svg";
 import html from "./tech/icons8-html.svg";
 import css from "./tech/icons8-css.png";
 import postgres from "./tech/icons8-postgresql.svg";
+import githubActions from "./tech/github-actions.svg";
+import azureDevops from "./tech/icons8-azure-devops.png";
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
@@ -72,6 +74,8 @@ export {
   html,
   css,
   postgres,
+  githubActions,
+  azureDevops,
   
   meta,
   shopify,
