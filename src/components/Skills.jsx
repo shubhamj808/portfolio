@@ -16,7 +16,7 @@ const ToolsCard = ({ index, title, skills }) => (
     >
       <div
         id="skill"
-        className='bg-tertiary rounded-[20px] p-10 md:max-w-400 md:p-10 sm:max-w-330 sm:p-10'
+        className='bg-tertiary rounded-[20px] lg:p-6 md:p-5 md:max-w-400 sm:max-w-330 sm:p-4'
       >
           <h3 className='text-white font-bold text-[24px] text-center'>
             {title}
@@ -24,7 +24,7 @@ const ToolsCard = ({ index, title, skills }) => (
 
           <div id="skillList" className="flex justify-center flex-wrap gap-2 m-2">
               {skills.map((skill, index) => (
-                <div id="skillItem" className="text-[13px] font-normal text-white border rounded-xl flex items-center justify-center gap-2 md:font-normal md:p-8 sm:font-normal sm:p-6" key={index}>
+                <div id="skillItem" className="text-[13px] font-normal text-white border rounded-xl flex items-center justify-center gap-2 lg:p-2 md:font-normal md:p-8 sm:font-normal sm:p-6" key={index}>
                   <img className="w-6 h-6" src={skill.icon} alt={skill.icon}></img>
                   <span>{skill.name}</span>
                 </div>

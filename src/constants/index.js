@@ -28,6 +28,7 @@ import {
   postgres,
   githubActions,
   azureDevops,
+  dynatrace,
 
   meta,
   starbucks,
@@ -222,6 +223,10 @@ const tools = [
         name: "Elasticsearch",
         icon: elastic,
       },
+      {
+        name: "Dynatrace",
+        icon: dynatrace,
+      }
     ],
   },
   {
