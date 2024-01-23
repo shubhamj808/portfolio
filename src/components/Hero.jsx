@@ -1,11 +1,21 @@
 import { motion } from "framer-motion";
 
-import {heroImage} from "../assets"
-
 import { styles } from "../styles";
-import { ComputersCanvas } from "./canvas";
+import { BallCanvas } from "./canvas";
 
 const Hero = () => {
+  const social_media = [
+    "logo-instagram",
+    "mail",
+    "logo-linkedin",
+    "logo-github",
+  ];
+  const social_media_links = [
+    "https://www.instagram.com/shubham_jadhav8/",
+    "mailto:shubhamjadhav123.sj@gmail.com",
+    "https://www.linkedin.com/in/shubham-jadhav-2429421b3/",
+    "https://github.com/shubhamj808",
+  ];
   return (
     <section className={`relative w-full h-screen mx-auto`}>
       <div
@@ -25,32 +35,31 @@ const Hero = () => {
             based in Pune, India
           </p>
           <div>
-            <button className="bg-gradient-to-r from-[#754ad1] to-[#a795cc] text-white hover:bg-[#2e195c] transition duration-300 ease-in-out py-4 px-8 mt-4 rounded-full">
+            <button className={`${styles.buttonStyle}`}>
               Download CV
             </button>
           </div>
-          <div>
-            {/* add social media icons like instagram, gmail, linkedin, github in this div */}
-            <div className='flex mt-4 gap-2'>
-              <a href="https://www.linkedin.com/in/shubham-jadhav-096a61190/" target="_blank" rel="noreferrer">
-                <img src="https://img.icons8.com/color/24/000000/linkedin.png" alt="linkedin" />
-              </a>
-              <a href="https://www.instagram.com/shubham_jadhav/" target="_blank" rel="noreferrer">
-                <img src="https://img.icons8.com/fluency/24/000000/instagram-new.png" alt="instagram" />
-              </a>
-              <a href="https://www.github.com/shubham-jadhav" target="_blank" rel="noreferrer">
-                <img src="https://img.icons8.com/fluency/24/000000/github.png" alt="github" />
-              </a>
-              <a href="https://www.gmail.com" target="_blank" rel="noreferrer">
-                <img src="https://img.icons8.com/fluency/24/000000/gmail.png" alt="gmail" />
-              </a>
-            </div>
+          <div className="mt-8 text-3xl flex md:justify-start gap-5">
+            {social_media?.map((icon, index) => (
+              <div
+                key={icon}
+                className="text-gray-600 hover:text-white cursor-pointer "
+                onClick={() => window.open(social_media_links[index])}
+              >
+                <ion-icon name={icon}></ion-icon>
+              </div>
+            ))}
           </div>
-
-
         </div>
-
       </div>
+
+
+      <div className="hidden md:flex relative justify-end p-16">
+        {/* <BallCanvas icon='/src/assets/hero3.png' /> */}
+        <img src='/src/assets/hero3.png' alt='hero_bg' className='w-full h-full max-w-[400px] relative object-cover rounded-2xl' />
+      </div>
+
+
 
       {/* <ComputersCanvas /> */}
 

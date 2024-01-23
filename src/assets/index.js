@@ -7,20 +7,30 @@ import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
-import heroImage from "./hero.png";
-
-import docker from "./tech/docker.png";
+import spring from "./tech/icons8-spring-boot.svg";
+import docker from "./tech/icons8-docker.svg";
 import git from "./tech/git.png";
-import mongodb from "./tech/mongodb.png";
-import nodejs from "./tech/nodejs.png";
-import reactjs from "./tech/reactjs.png";
-import kubernetes from "./tech/kubernetes.png";
+import mongodb from "./tech/icons8-mongodb.svg";
+import nodejs from "./tech/icons8-nodejs.svg";
+import reactjs from "./tech/icons8-react.svg";
+import kubernetes from "./tech/icons8-kubernetes.svg";
 import java from "./tech/java.png";
-import dotnet from "./tech/dotnet.png";
-import azure from "./tech/azure.png";
-import prometheus from "./tech/prometheus.svg";
-import elastic from "./tech/elasticsearch.svg";
-import terraform from "./tech/terraform.png";
+import dotnet from "./tech/icons8-.net-framework.svg";
+import azure from "./tech/icons8-azure.svg";
+import prometheus from "./tech/icons8-prometheus.svg";
+import elastic from "./tech/icons8-elasticsearch.svg";
+import terraform from "./tech/icons8-terraform-48.png";
+import argocd from "./tech/argoCD.svg";
+import jenkins from "./tech/icons8-jenkins.svg";
+import tailwind from "./tech/icons8-tailwindcss.svg";
+import mysql from "./tech/icons8-mysql.svg";
+import grafana from "./tech/icons8-grafana.svg";
+import html from "./tech/icons8-html.svg";
+import css from "./tech/icons8-css.png";
+import postgres from "./tech/icons8-postgresql.svg";
+import githubActions from "./tech/github-actions.svg";
+import azureDevops from "./tech/icons8-azure-devops.png";
+import dynatrace from "./tech/dynatrace-icon.svg"
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
@@ -43,7 +53,6 @@ export {
   menu,
   close,
 
-  heroImage,
 
   docker,
   git,
@@ -57,6 +66,18 @@ export {
   prometheus,
   elastic,
   terraform,
+  spring,
+  argocd,
+  jenkins,
+  tailwind,
+  mysql,
+  grafana,
+  html,
+  css,
+  postgres,
+  githubActions,
+  azureDevops,
+  dynatrace,
   
   meta,
   shopify,
