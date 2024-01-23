@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
+import { BallCanvas } from "./canvas";
 
 const Hero = () => {
   const social_media = [
@@ -38,7 +39,7 @@ const Hero = () => {
               Download CV
             </button>
           </div>
-          <div className="mt-8 text-3xl flex items-center md:justify-start justify-center gap-5">
+          <div className="mt-8 text-3xl flex md:justify-start gap-5">
             {social_media?.map((icon, index) => (
               <div
                 key={icon}
@@ -49,11 +50,16 @@ const Hero = () => {
               </div>
             ))}
           </div>
-
-
         </div>
-
       </div>
+
+
+      <div className="hidden md:flex relative justify-end p-16">
+        {/* <BallCanvas icon='/src/assets/hero3.png' /> */}
+        <img src='/src/assets/hero3.png' alt='hero_bg' className='w-full h-full max-w-[400px] relative object-cover rounded-2xl' />
+      </div>
+
+
 
       {/* <ComputersCanvas /> */}
 
