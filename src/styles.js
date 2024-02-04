@@ -13,7 +13,10 @@ const styles = {
   sectionSubText:
     "sm:text-[18px] text-[14px] text-secondary uppercase tracking-wider",
   buttonStyle:
-   "bg-gradient-to-r from-[#754ad1] to-[#a795cc] text-white hover:bg-[#2e195c] cursor-pointer transition duration-300 ease-in-out py-4 px-8 mt-4 rounded-full"
+   "bg-gradient-to-r from-[#754ad1] to-[#a795cc] text-white hover:bg-[#2e195c] cursor-pointer transition duration-300 ease-in-out py-4 px-8 mt-4 rounded-full",
+
+  imageStyle:
+    "w-full h-full max-w-[400px] relative object-cover rounded-2xl"
 };
 
 export { styles };

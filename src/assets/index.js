@@ -7,6 +7,8 @@ import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
+import hero from "./hero3.png";
+
 import spring from "./tech/icons8-spring-boot.svg";
 import docker from "./tech/icons8-docker.svg";
 import git from "./tech/git.png";
@@ -53,6 +55,7 @@ export {
   menu,
   close,
 
+  hero,
 
   docker,
   git,
