@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
-
+import { hero } from "../assets";
 import { styles } from "../styles";
-import { BallCanvas } from "./canvas";
 
 const Hero = () => {
   const social_media = [
@@ -55,8 +54,7 @@ const Hero = () => {
 
 
       <div className="hidden md:flex relative justify-end p-16">
-        {/* <BallCanvas icon='/src/assets/hero3.png' /> */}
-        <img src='/src/assets/hero3.png' alt='hero_bg' className='w-full h-full max-w-[400px] relative object-cover rounded-2xl' />
+        <img src={hero} alt='hero_bg' className={`${styles.imageStyle}`} />
       </div>
 
 
