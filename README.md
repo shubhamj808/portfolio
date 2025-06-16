@@ -74,9 +74,6 @@ npm run build
 
 The built files will be in the `dist` directory.
 
-## License
-MIT
-
 ## Contact
 Feel free to reach out to me through the contact form on the website or connect with me on:
 - GitHub: [shubhamj808](https://github.com/shubhamj808)
