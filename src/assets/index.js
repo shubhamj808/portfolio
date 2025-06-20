@@ -32,7 +32,7 @@ import css from "./tech/icons8-css.png";
 import postgres from "./tech/icons8-postgresql.svg";
 import githubActions from "./tech/github-actions.svg";
 import azureDevops from "./tech/icons8-azure-devops.png";
-import dynatrace from "./tech/dynatrace-icon.svg"
+import dynatrace from "./tech/dynatrace-icon.svg";
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
@@ -54,9 +54,7 @@ export {
   github,
   menu,
   close,
-
   hero,
-
   docker,
   git,
   mongodb,
@@ -81,14 +79,12 @@ export {
   githubActions,
   azureDevops,
   dynatrace,
-  
   meta,
   shopify,
   starbucks,
   tesla,
   vm,
   cybage,
-
   carrent,
   jobit,
   tripguide,
