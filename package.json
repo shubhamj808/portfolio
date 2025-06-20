@@ -10,7 +10,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format:check": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint:check": "DEBUG=eslint:cli-engine eslint ."
   },
   "dependencies": {
