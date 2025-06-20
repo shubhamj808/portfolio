@@ -1,0 +1,29 @@
+on:
+    workflow_call:
+        inputs:
+            node-version:
+                description: 'Node.js version to use'
+                required: false
+                default: '18'
+                type: string
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+            - name: Set up Node
+              uses: actions/setup-node@v4
+              with:
+                node-version: ${{ inputs.node-version || '18' }}
+                cache: 'npm'
+                cache-dependency-path: 'package-lock.json'
+            - name: Install dependencies
+              run: npm install
+            - name: Build
+              run: npm run build
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                path: ./dist
