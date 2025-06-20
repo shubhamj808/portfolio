@@ -18,6 +18,6 @@ jobs:
   reusable-build-workflow:
     uses: ./.github/workflows/reusable-build-workflow.yaml
     with:
-      node-version: "23" # Specify the Node.js version to use
+      node-version: "23.7.0" # Specify the Node.js version to use
     
     
