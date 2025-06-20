@@ -4,15 +4,17 @@ import globals from "globals";
 
 // Remove leading/trailing whitespace from global keys
 function trimGlobals(obj) {
-  return Object.fromEntries(
-    Object.entries(obj).map(([k, v]) => [k.trim(), v])
-  );
+  return Object.fromEntries(Object.entries(obj).map(([k, v]) => [k.trim(), v]));
 }
 
 export default [
   js.configs.recommended,
   {
-    files: ["src/**/*.{js,jsx,ts,tsx}", "constants/**/*.{js,jsx,ts,tsx}", "hoc/**/*.{js,jsx,ts,tsx}"],
+    files: [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "constants/**/*.{js,jsx,ts,tsx}",
+      "hoc/**/*.{js,jsx,ts,tsx}",
+    ],
     plugins: { react },
     languageOptions: {
       globals: {
