@@ -1,5 +1,5 @@
 import React from "react";
-import Tilt from "react-tilt";
+import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -9,7 +9,7 @@ import { fadeIn, textVariant, zoomIn } from "../utils/motion";
 import { t } from "maath/dist/misc-7d870b3c.esm";
 
 const ToolsCard = ({ index, title, skills }) => (
-  <Tilt className="flex flex-wrap">
+  <Tilt className="flex flex-wrap" tiltMaxAngleX={45} tiltMaxAngleY={45} scale={1} transitionSpeed={450}>
     <motion.div
       variants={zoomIn(index * 0.5, 0.75)}
       className="w-full max-w-[340px] sm:max-w-md green-pink-gradient p-[1px] rounded-[20px] shadow-card"
