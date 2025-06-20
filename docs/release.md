@@ -9,12 +9,16 @@ This project uses [`semantic-release`](https://semantic-release.gitbook.io/) to 
 Semantic-release follows the [Conventional Commits](https://www.conventionalcommits.org/) specification. The type of commit determines the version bump:
 
 - **Major Release (`1.0.0 → 2.0.0`)**
+
   - Any commit with a `BREAKING CHANGE` in the footer or an exclamation mark after the type/scope.
-  - Example:  
+  - Example:
+
     ```
     feat!: change API endpoint
     ```
+
     or
+
     ```
     fix: update validation
 
@@ -22,15 +26,16 @@ Semantic-release follows the [Conventional Commits](https://www.conventionalcomm
     ```
 
 - **Minor Release (`1.0.0 → 1.1.0`)**
+
   - Commits with the `feat` type.
-  - Example:  
+  - Example:
     ```
     feat: add user profile page
     ```
 
 - **Patch Release (`1.0.0 → 1.0.1`)**
   - Commits with the `fix` type or other types (e.g., `chore`, `docs`, `refactor`) that do not introduce breaking changes or features.
-  - Example:  
+  - Example:
     ```
     fix: correct typo in login form
     ```
@@ -47,6 +52,7 @@ Semantic-release follows the [Conventional Commits](https://www.conventionalcomm
 ### Release Automation
 
 When changes are merged to the main branch:
+
 - Semantic-release analyzes commit messages.
 - Determines the next version.
 - Publishes a release and updates the changelog automatically.
