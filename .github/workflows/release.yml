@@ -68,7 +68,7 @@ jobs:
           if [ "$current_branch" != "$branch_name" ]; then
             git checkout "$branch_name"
           fi
-          git pull
+          git pull origin "$branch_name" --no-rebase || true
           echo "Running semantic-release on branch: $branch_name"
           npx semantic-release
 
