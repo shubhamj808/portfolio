@@ -65,7 +65,7 @@ jobs:
           current_branch=$(git rev-parse --abbrev-ref HEAD)
           echo "Current branch: $current_branch"
           echo "Setting release branch in .releaserc.json to: $current_branch"
-          sed -i '' "s|release/\*|$current_branch|g" .releaserc.json
+          sed -i "s|release/\*|$current_branch|g" .releaserc.json
           cat .releaserc.json
           echo "Running semantic-release on branch: $current_branch"
           npx semantic-release
