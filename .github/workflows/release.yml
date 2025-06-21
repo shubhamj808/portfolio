@@ -40,25 +40,6 @@ jobs:
           version=$(grep -oP 'Release note for version \K[0-9]+\.[0-9]+\.[0-9]+' sr.log | tail -1)
           echo "version=$version" >> $GITHUB_OUTPUT
 
-      # - name: Create and checkout release branch
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      #   run: |
-      #     git config user.name "github-actions[bot]"
-      #     git config user.email "github-actions[bot]@users.noreply.github.com"
-      #     git checkout main
-      #     branch_name=release/v${{ steps.get_version.outputs.version }}
-      #     echo "Creating and checking out branch: $branch_name"
-      #     if git ls-remote --exit-code --heads origin "$branch_name"; then
-      #       git push origin --delete "$branch_name" || true
-      #       git branch -D "$branch_name" || true
-      #       git checkout -b "$branch_name"
-      #       git push origin "$branch_name"
-      #     else
-      #       git checkout -b "$branch_name"
-      #       git push origin "$branch_name"
-      #     fi
-
       - name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -73,15 +54,14 @@ jobs:
 
       - name: Create Pull Request to main
         id: create_pr
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "chore: release v${{ steps.get_version.outputs.version }}"
           title: "Release v${{ steps.get_version.outputs.version }}"
-          body: "Automated PR to merge release/v${{ steps.get_version.outputs.version }} into main"
+          body: "Automated PR to merge ${{ github.ref_name }} into main"
+          branch: ${{ github.ref_name }}
           base: main
-          head: release/v0.0.0
-          draft: false
 
       - name: Auto-merge Pull Request
         if: steps.create_pr.outputs.pull-request-number != ''
