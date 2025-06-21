@@ -32,7 +32,7 @@ import {
   tripguide,
   cybage,
   vm,
-} from "../assets"
+} from "../assets";
 
 export const navLinks = [
   {
@@ -51,7 +51,7 @@ export const navLinks = [
     id: "contact",
     title: "Contact",
   },
-]
+];
 
 const services = [
   {
@@ -70,7 +70,7 @@ const services = [
     title: "Monitoring",
     icon: creator,
   },
-]
+];
 
 const technologies = [
   {
@@ -156,7 +156,7 @@ const technologies = [
     name: "Azure Devops",
     icon: azureDevops,
   },
-]
+];
 
 const tools = [
   {
@@ -272,7 +272,7 @@ const tools = [
       },
     ],
   },
-]
+];
 
 const experiences = [
   {
@@ -303,7 +303,7 @@ const experiences = [
       "Implemented Infrastructure ad Code(IaC) by utilizing Azure ARM templates for streamlined deployment on Microsoft Azure.",
     ],
   },
-]
+];
 
 const testimonials = [
   {
@@ -330,7 +330,7 @@ const testimonials = [
     company: "456 Enterprises",
     image: "https://randomuser.me/api/portraits/women/6.jpg",
   },
-]
+];
 
 const projects = [
   {
@@ -396,6 +396,6 @@ const projects = [
     image: tripguide,
     source_code_link: "https://github.com/",
   },
-]
+];
 
-export { services, tools, technologies, experiences, testimonials, projects }
+export { services, tools, technologies, experiences, testimonials, projects };
