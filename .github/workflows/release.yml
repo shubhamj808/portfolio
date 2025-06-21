@@ -1,7 +1,9 @@
 name: Release
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - release/*
 
 permissions:
   contents: write
@@ -33,30 +35,29 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git pull origin main --no-rebase || true
+          # git pull origin main --no-rebase || true
           npx semantic-release --dry-run | tee sr.log
-          version=$(grep -oP 'Release note for version \K[0-9]+\.[0-9]+\.[0-9]+' sr.log | tail -1)
           version=$(grep -oP 'Release note for version \K[0-9]+\.[0-9]+\.[0-9]+' sr.log | tail -1)
           echo "version=$version" >> $GITHUB_OUTPUT
 
-      - name: Create and checkout release branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout main
-          branch_name=release/v${{ steps.get_version.outputs.version }}
-          echo "Creating and checking out branch: $branch_name"
-          if git ls-remote --exit-code --heads origin "$branch_name"; then
-            git push origin --delete "$branch_name" || true
-            git branch -D "$branch_name" || true
-            git checkout -b "$branch_name"
-            git push origin "$branch_name"
-          else
-            git checkout -b "$branch_name"
-            git push origin "$branch_name"
-          fi
+      # - name: Create and checkout release branch
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: |
+      #     git config user.name "github-actions[bot]"
+      #     git config user.email "github-actions[bot]@users.noreply.github.com"
+      #     git checkout main
+      #     branch_name=release/v${{ steps.get_version.outputs.version }}
+      #     echo "Creating and checking out branch: $branch_name"
+      #     if git ls-remote --exit-code --heads origin "$branch_name"; then
+      #       git push origin --delete "$branch_name" || true
+      #       git branch -D "$branch_name" || true
+      #       git checkout -b "$branch_name"
+      #       git push origin "$branch_name"
+      #     else
+      #       git checkout -b "$branch_name"
+      #       git push origin "$branch_name"
+      #     fi
 
       - name: Run semantic-release
         env:
@@ -64,9 +65,9 @@ jobs:
         run: |
           current_branch=$(git rev-parse --abbrev-ref HEAD)
           echo "Current branch: $current_branch"
-          echo "Setting release branch in .releaserc.json to: $current_branch"
-          sed -i "s|release/\*|$current_branch|g" .releaserc.json
-          cat .releaserc.json
+          # echo "Setting release branch in .releaserc.json to: $current_branch"
+          # sed -i "s|release/\*|$current_branch|g" .releaserc.json
+          # cat .releaserc.json
           echo "Running semantic-release on branch: $current_branch"
           npx semantic-release
 
@@ -79,11 +80,11 @@ jobs:
           title: "Release v${{ steps.get_version.outputs.version }}"
           body: "Automated PR to merge release/v${{ steps.get_version.outputs.version }} into main"
           base: main
-          head: release/v${{ steps.get_version.outputs.version }}
+          head: release/v0.0.0
           draft: false
 
       - name: Auto-merge Pull Request
         if: steps.create_pr.outputs.pull-request-number != ''
         run: |
           pr_number=${{ steps.create_pr.outputs.pull-request-number }}
-          gh pr merge "$pr_number" --squash --admin --delete-branch
+          gh pr merge "$pr_number" --squash
