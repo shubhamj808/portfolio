@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/shubhamj808/portfolio/compare/v1.0.0...v1.1.0) (2025-06-21)
+
+
+### Features
+
+* enable manual triggering of the release workflow ([49b3bd3](https://github.com/shubhamj808/portfolio/commit/49b3bd37cf9a245a7e78629d56aa9537dcf2028b))
+
 # 1.0.0 (2025-06-21)
 
 
