@@ -28,6 +28,13 @@ jobs:
           npm install
           npm ci
 
+      - name: Create release branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git fetch --prune --unshallow
+          git checkout -b release/v$(date +%Y%m%d%H%M%S)
+
       - name: Get next release version
         id: get_version
         env:
@@ -68,6 +75,7 @@ jobs:
           npx semantic-release
 
       - name: Create Pull Request to main
+        id: create_pr
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -77,3 +85,9 @@ jobs:
           base: main
           head: release/v${{ steps.get_version.outputs.version }}
           draft: false
+
+      - name: Auto-merge Pull Request
+        if: steps.create_pr.outputs.pull-request-number != ''
+        run: |
+          pr_number=${{ steps.create_pr.outputs.pull-request-number }}
+          gh pr merge "$pr_number" --squash --admin --delete-branch
