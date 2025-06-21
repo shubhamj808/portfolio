@@ -65,7 +65,7 @@ jobs:
           current_branch=$(git rev-parse --abbrev-ref HEAD)
           echo "Current branch: $current_branch"
           echo "Running semantic-release on branch: $branch_name"
-          npx semantic-release --branch "$branch_name"
+          npx semantic-release -b "$branch_name"
 
       - name: Create Pull Request to main
         id: create_pr
