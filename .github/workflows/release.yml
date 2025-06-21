@@ -28,6 +28,23 @@ jobs:
           npm install
           npm ci
 
+      - name: Get next release version
+        id: get_version
+        run: |
+          npm install -g semantic-release@latest
+          npx semantic-release --dry-run | tee sr.log
+          version=$(grep -oP 'The next release version is \K[0-9]+\.[0-9]+\.[0-9]+' sr.log | tail -1)
+          echo "version=$version" >> $GITHUB_OUTPUT
+
+      - name: Create and checkout release branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b release/v${{ steps.get_version.outputs.version }}
+          git push origin release/v${{ steps.get_version.outputs.version }}
+
       - name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
