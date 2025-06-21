@@ -62,15 +62,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          branch_name=release/v${{ steps.get_version.outputs.version }}
           current_branch=$(git rev-parse --abbrev-ref HEAD)
           echo "Current branch: $current_branch"
-          if [ "$current_branch" != "$branch_name" ]; then
-            git checkout "$branch_name"
-          fi
-          git pull origin "$branch_name" --no-rebase || true
           echo "Running semantic-release on branch: $branch_name"
-          npx semantic-release
+          npx semantic-release --branch "$branch_name"
 
       - name: Create Pull Request to main
         id: create_pr
