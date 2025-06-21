@@ -47,6 +47,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git checkout main
           branch_name=release/v${{ steps.get_version.outputs.version }}
+          echo "Creating and checking out branch: $branch_name"
           if git ls-remote --exit-code --heads origin "$branch_name"; then
             git push origin --delete "$branch_name" || true
             git branch -D "$branch_name" || true
@@ -63,10 +64,12 @@ jobs:
         run: |
           branch_name=release/v${{ steps.get_version.outputs.version }}
           current_branch=$(git rev-parse --abbrev-ref HEAD)
+          echo "Current branch: $current_branch"
           if [ "$current_branch" != "$branch_name" ]; then
             git checkout "$branch_name"
-            git pull
           fi
+          git pull
+          echo "Running semantic-release on branch: $branch_name"
           npx semantic-release
 
       - name: Create Pull Request to main
