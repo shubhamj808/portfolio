@@ -60,9 +60,3 @@ jobs:
           body: "Automated PR to merge ${{ github.ref_name }} into main"
           branch: ${{ github.ref_name }}
           base: main
-
-      - name: Auto-merge Pull Request
-        if: steps.create_pr.outputs.pull-request-number != ''
-        run: |
-          pr_number=${{ steps.create_pr.outputs.pull-request-number }}
-          gh pr merge "$pr_number" --squash
