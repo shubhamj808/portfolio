@@ -6,9 +6,7 @@ import web from "./web.png";
 import github from "./github.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
-
 import hero from "./hero3.png";
-
 import spring from "./tech/icons8-spring-boot.svg";
 import docker from "./tech/icons8-docker.svg";
 import git from "./tech/git.png";
@@ -32,15 +30,13 @@ import css from "./tech/icons8-css.png";
 import postgres from "./tech/icons8-postgresql.svg";
 import githubActions from "./tech/github-actions.svg";
 import azureDevops from "./tech/icons8-azure-devops.png";
-import dynatrace from "./tech/dynatrace-icon.svg"
-
+import dynatrace from "./tech/dynatrace-icon.svg";
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
 import vm from "./company/vm.jpeg";
 import cybage from "./company/cybage.jpeg";
-
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
@@ -54,9 +50,7 @@ export {
   github,
   menu,
   close,
-
   hero,
-
   docker,
   git,
   mongodb,
@@ -81,14 +75,12 @@ export {
   githubActions,
   azureDevops,
   dynatrace,
-  
   meta,
   shopify,
   starbucks,
   tesla,
   vm,
   cybage,
-
   carrent,
   jobit,
   tripguide,

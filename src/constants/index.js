@@ -1,10 +1,8 @@
-import { Html } from "@react-three/drei";
 import {
   mobile,
   backend,
   creator,
   web,
-
   reactjs,
   nodejs,
   mongodb,
@@ -29,11 +27,6 @@ import {
   githubActions,
   azureDevops,
   dynatrace,
-
-  meta,
-  starbucks,
-  tesla,
-  shopify,
   carrent,
   jobit,
   tripguide,
@@ -58,7 +51,6 @@ export const navLinks = [
     id: "contact",
     title: "Contact",
   },
-  
 ];
 
 const services = [
@@ -138,7 +130,7 @@ const technologies = [
     name: "MongoDB",
     icon: mongodb,
   },
-  
+
   {
     name: "git",
     icon: git,
@@ -147,7 +139,7 @@ const technologies = [
     name: "Spring boot",
     icon: spring,
   },
-  
+
   {
     name: "Java",
     icon: java,
@@ -186,7 +178,6 @@ const tools = [
         name: "Tailwind CSS",
         icon: tailwind,
       },
-
     ],
   },
   {
@@ -228,7 +219,7 @@ const tools = [
       {
         name: "Dynatrace",
         icon: dynatrace,
-      }
+      },
     ],
   },
   {
@@ -278,7 +269,7 @@ const tools = [
       {
         name: "Java",
         icon: java,
-      }
+      },
     ],
   },
 ];
