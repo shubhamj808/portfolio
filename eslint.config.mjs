@@ -30,7 +30,7 @@ export default defineConfig([
     },
 
     rules: {
-      semi: ["error", "never"],
+      semi: ["error", "always"], // require semicolons
     },
   },
 ]);
