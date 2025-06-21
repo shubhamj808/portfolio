@@ -28,18 +28,15 @@ jobs:
           npm install
           npm ci
 
-      - name: Create release branch
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b release/v$(date +%Y%m%d%H%M%S)
-
       - name: Get next release version
         id: get_version
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npm install -g semantic-release@latest
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b release/v$(date +%Y%m%d%H%M%S)
           npx semantic-release --dry-run | tee sr.log
           version=$(grep -oP 'Release note for version \K[0-9]+\.[0-9]+\.[0-9]+' sr.log | tail -1)
           version=$(grep -oP 'Release note for version \K[0-9]+\.[0-9]+\.[0-9]+' sr.log | tail -1)
