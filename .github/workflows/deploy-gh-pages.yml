@@ -41,7 +41,7 @@ jobs:
         run: |
           version=$(jq -r '.version' package.json)
           echo "Latest release version: $version"
-          echo "latest_version=$version" >> "$GITHUB_OUTPUT"
+          echo "latest_version=v$version" >> "$GITHUB_OUTPUT"
 
   # Deployment job
   deploy:
