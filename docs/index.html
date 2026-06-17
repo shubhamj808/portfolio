@@ -1,816 +1,745 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Shubham Jadhav - DevOps Engineer portfolio. Kubernetes, Azure AKS, CI/CD, Istio, Helm." />
-    <title>Shubham Jadhav | DevOps Engineer</title>
-    <style>
-      /* ===== Reset & Base ===== */
-      *,
-      *::before,
-      *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      :root {
-        --bg: #0d1117;
-        --surface: #161b22;
-        --surface2: #21262d;
-        --border: #30363d;
-        --accent: #58a6ff;
-        --accent2: #3fb950;
-        --text: #e6edf3;
-        --muted: #8b949e;
-        --radius: 10px;
-        --transition: 0.25s ease;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        background-color: var(--bg);
-        color: var(--text);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen, Ubuntu, Cantarell, sans-serif;
-        line-height: 1.7;
-        min-height: 100vh;
-      }
-
-      a {
-        color: var(--accent);
-        text-decoration: none;
-        transition: opacity var(--transition);
-      }
-
-      a:hover {
-        opacity: 0.8;
-      }
-
-      img {
-        max-width: 100%;
-        display: block;
-      }
-
-      /* ===== Layout ===== */
-      .container {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-      }
-
-      section {
-        padding: 5rem 0;
-      }
-
-      /* ===== Navbar ===== */
-      nav {
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background: rgba(13, 17, 23, 0.85);
-        backdrop-filter: blur(12px);
-        border-bottom: 1px solid var(--border);
-      }
-
-      .nav-inner {
-        max-width: 960px;
-        margin: 0 auto;
-        padding: 0 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        height: 60px;
-      }
-
-      .nav-logo {
-        font-weight: 700;
-        font-size: 1.1rem;
-        color: var(--text);
-      }
-
-      .nav-logo span {
-        color: var(--accent);
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 1.75rem;
-        list-style: none;
-      }
-
-      .nav-links a {
-        color: var(--muted);
-        font-size: 0.9rem;
-        font-weight: 500;
-        transition: color var(--transition);
-      }
-
-      .nav-links a:hover {
-        color: var(--text);
-        opacity: 1;
-      }
-
-      /* ===== Hero ===== */
-      .hero {
-        padding: 7rem 0 5rem;
-        text-align: center;
-      }
-
-      .hero-badge {
-        display: inline-block;
-        background: var(--surface2);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 0.3rem 1rem;
-        font-size: 0.8rem;
-        color: var(--accent2);
-        margin-bottom: 1.5rem;
-        letter-spacing: 0.05em;
-      }
-
-      .hero h1 {
-        font-size: clamp(2.2rem, 6vw, 3.5rem);
-        font-weight: 800;
-        line-height: 1.2;
-        margin-bottom: 1rem;
-      }
-
-      .hero h1 span {
-        color: var(--accent);
-      }
-
-      .hero-sub {
-        font-size: 1.15rem;
-        color: var(--muted);
-        max-width: 560px;
-        margin: 0 auto 2.5rem;
-      }
-
-      .hero-cta {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.7rem 1.5rem;
-        border-radius: var(--radius);
-        font-size: 0.95rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: transform var(--transition), box-shadow var(--transition);
-        border: none;
-      }
-
-      .btn:hover {
-        transform: translateY(-2px);
-        opacity: 1;
-      }
-
-      .btn-primary {
-        background: var(--accent);
-        color: #0d1117;
-      }
-
-      .btn-secondary {
-        background: var(--surface2);
-        color: var(--text);
-        border: 1px solid var(--border);
-      }
-
-      /* ===== Section headings ===== */
-      .section-title {
-        font-size: 1.75rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-      }
-
-      .section-title span {
-        color: var(--accent);
-      }
-
-      .section-divider {
-        width: 48px;
-        height: 4px;
-        background: var(--accent);
-        border-radius: 2px;
-        margin-bottom: 3rem;
-      }
-
-      /* ===== About ===== */
-      .about-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        align-items: center;
-      }
-
-      .about-text p {
-        color: var(--muted);
-        margin-bottom: 1rem;
-      }
-
-      .about-stats {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1.25rem;
-      }
-
-      .stat-card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 1.25rem;
-        text-align: center;
-      }
-
-      .stat-card .stat-num {
-        font-size: 2rem;
-        font-weight: 800;
-        color: var(--accent);
-      }
-
-      .stat-card .stat-label {
-        font-size: 0.8rem;
-        color: var(--muted);
-        margin-top: 0.25rem;
-      }
-
-      /* ===== Skills ===== */
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-        gap: 1rem;
-      }
-
-      .skill-chip {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 0.75rem 1rem;
-        text-align: center;
-        font-size: 0.88rem;
-        font-weight: 500;
-        color: var(--text);
-        transition: border-color var(--transition), transform var(--transition);
-      }
-
-      .skill-chip:hover {
-        border-color: var(--accent);
-        transform: translateY(-2px);
-      }
-
-      .skill-chip .skill-icon {
-        font-size: 1.4rem;
-        margin-bottom: 0.4rem;
-      }
-
-      /* ===== Experience ===== */
-      .timeline {
-        position: relative;
-        padding-left: 2rem;
-      }
-
-      .timeline::before {
-        content: "";
-        position: absolute;
-        left: 7px;
-        top: 0;
-        bottom: 0;
-        width: 2px;
-        background: var(--border);
-      }
-
-      .timeline-item {
-        position: relative;
-        margin-bottom: 2.5rem;
-      }
-
-      .timeline-item::before {
-        content: "";
-        position: absolute;
-        left: -1.65rem;
-        top: 6px;
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background: var(--accent);
-        border: 2px solid var(--bg);
-      }
-
-      .timeline-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 0.5rem;
-      }
-
-      .timeline-title {
-        font-size: 1.05rem;
-        font-weight: 700;
-      }
-
-      .timeline-company {
-        color: var(--accent);
-        font-size: 0.9rem;
-        font-weight: 600;
-      }
-
-      .timeline-date {
-        background: var(--surface2);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 0.2rem 0.75rem;
-        font-size: 0.78rem;
-        color: var(--muted);
-        white-space: nowrap;
-      }
-
-      .timeline-desc {
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-
-      .timeline-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 0.75rem;
-      }
-
-      .tag {
-        background: var(--surface2);
-        border: 1px solid var(--border);
-        border-radius: 6px;
-        padding: 0.2rem 0.6rem;
-        font-size: 0.75rem;
-        color: var(--muted);
-      }
-
-      /* ===== Projects ===== */
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-        gap: 1.5rem;
-      }
-
-      .project-card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-        transition: border-color var(--transition), transform var(--transition);
-      }
-
-      .project-card:hover {
-        border-color: var(--accent);
-        transform: translateY(-3px);
-      }
-
-      .project-card h3 {
-        font-size: 1rem;
-        font-weight: 700;
-      }
-
-      .project-card p {
-        color: var(--muted);
-        font-size: 0.88rem;
-        flex: 1;
-      }
-
-      /* ===== Contact ===== */
-      .contact-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 1rem;
-      }
-
-      .contact-card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: var(--radius);
-        padding: 1.25rem;
-        display: flex;
-        align-items: center;
-        gap: 0.85rem;
-        transition: border-color var(--transition);
-      }
-
-      .contact-card:hover {
-        border-color: var(--accent);
-      }
-
-      .contact-icon {
-        font-size: 1.4rem;
-      }
-
-      .contact-info .label {
-        font-size: 0.75rem;
-        color: var(--muted);
-      }
-
-      .contact-info .value {
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: var(--text);
-      }
-
-      /* ===== Footer ===== */
-      footer {
-        border-top: 1px solid var(--border);
-        padding: 2rem 0;
-        text-align: center;
-        color: var(--muted);
-        font-size: 0.85rem;
-      }
-
-      /* ===== Responsive ===== */
-      @media (max-width: 640px) {
-        .about-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .nav-links {
-          display: none;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <!-- Navbar -->
-    <nav>
-      <div class="nav-inner">
-        <div class="nav-logo">SJ<span>.</span></div>
-        <ul class="nav-links">
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
-
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container">
-        <div class="hero-badge">&#x2699; Available for opportunities</div>
-        <h1>Hi, I'm <span>Shubham Jadhav</span></h1>
-        <p class="hero-sub">
-          DevOps Engineer specialising in Kubernetes, Azure AKS, Istio service
-          mesh, CI/CD pipelines, and cloud-native infrastructure automation.
-        </p>
-        <div class="hero-cta">
-          <a class="btn btn-primary" href="#contact">Get in Touch</a>
-          <a
-            class="btn btn-secondary"
-            href="https://github.com/shubhamj808"
-            target="_blank"
-            rel="noopener noreferrer"
-            >GitHub Profile</a
-          >
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-      <div class="container">
-        <h2 class="section-title">About <span>Me</span></h2>
-        <div class="section-divider"></div>
-        <div class="about-grid">
-          <div class="about-text">
-            <p>
-              I'm a Software &amp; DevOps Engineer based in Pune, India, with
-              hands-on experience architecting and operating production-grade
-              Kubernetes clusters on Azure AKS. I enjoy turning complex
-              infrastructure problems into elegant, automated solutions.
-            </p>
-            <p>
-              My day-to-day involves configuring Istio service meshes, building
-              CI/CD pipelines in GitLab, writing Helm charts, and keeping
-              platform reliability high. I'm currently deepening my expertise in
-              MLOps on Kubernetes and HashiCorp Vault integration.
-            </p>
-            <p>
-              Outside of work I explore South India on road trips, hit the gym,
-              and obsess over optimising cloud spend.
-            </p>
-          </div>
-          <div class="about-stats">
-            <div class="stat-card">
-              <div class="stat-num">3+</div>
-              <div class="stat-label">Years Experience</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num">10+</div>
-              <div class="stat-label">Production Clusters</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num">50+</div>
-              <div class="stat-label">CI/CD Pipelines</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num">3</div>
-              <div class="stat-label">Companies</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills">
-      <div class="container">
-        <h2 class="section-title">Tech <span>Stack</span></h2>
-        <div class="section-divider"></div>
-        <div class="skills-grid">
-          <div class="skill-chip">
-            <div class="skill-icon">&#x2388;</div>
-            Kubernetes
-          </div>
-          <div class="skill-chip">
-            <div class="skill-icon">&#x2601;</div>
-            Azure AKS
-          </div>
-          <div class="skill-chip">
-            <div class="skill-icon">&#x1F578;</div>
-            Istio
-          </div>
-          <div class="skill-chip">
-            <div class="skill-icon">&#x26F5;</div>
-            Helm
-          </div>
-          <div class="skill-chip">
-            <div class="skill-icon">&#x1F9F0;</div>
-            GitLab CI
-          </div>
-          <div class="skill-chip">
-            <div class="skill-icon">&#x1F433;</div>
-            Docker
-          </div>
-          <div class="skill-chip">
-            <div class="skill-icon">&#x1F40D;</div>
-            Python
-          </div>
-          <div class="skill-chip">
-            <div class="skill-icon">&#x1F4BB;</div>
-            Bash / Shell
-          </div>
-          <div class="skill-chip">
-            <div class="skill-icon">&#x1F527;</div>
-            Terraform
-          </div>
-          <div class="skill-chip">
-            <div class="skill-icon">&#x1F512;</div>
-            Vault
-          </div>
-          <div class="skill-chip">
-            <div class="skill-icon">&#x1F4CA;</div>
-            Prometheus
-          </div>
-          <div class="skill-chip">
-            <div class="skill-icon">&#x1F4C8;</div>
-            Grafana
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience">
-      <div class="container">
-        <h2 class="section-title">Work <span>Experience</span></h2>
-        <div class="section-divider"></div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-header">
-              <div>
-                <div class="timeline-title">DevOps Engineer</div>
-                <div class="timeline-company">Valtech</div>
-              </div>
-              <span class="timeline-date">2023 &ndash; Present</span>
-            </div>
-            <p class="timeline-desc">
-              Architect and manage production Azure AKS clusters serving
-              enterprise clients. Configure Istio service mesh with mTLS,
-              traffic management, and observability. Build and maintain
-              GitLab CI/CD pipelines for multi-team deployments.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">Kubernetes</span>
-              <span class="tag">Azure AKS</span>
-              <span class="tag">Istio</span>
-              <span class="tag">GitLab CI</span>
-              <span class="tag">Helm</span>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-header">
-              <div>
-                <div class="timeline-title">DevOps Engineer</div>
-                <div class="timeline-company">FNF (Fidelity National Financial)</div>
-              </div>
-              <span class="timeline-date">2022 &ndash; 2023</span>
-            </div>
-            <p class="timeline-desc">
-              Managed containerised workloads, implemented infrastructure
-              automation with Terraform, and maintained CI/CD workflows
-              for settlement processing systems.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">Terraform</span>
-              <span class="tag">Docker</span>
-              <span class="tag">CI/CD</span>
-              <span class="tag">Linux</span>
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-header">
-              <div>
-                <div class="timeline-title">DevOps Engineer</div>
-                <div class="timeline-company">UBS</div>
-              </div>
-              <span class="timeline-date">2021 &ndash; 2022</span>
-            </div>
-            <p class="timeline-desc">
-              Supported cloud infrastructure operations, containerisation
-              initiatives, and pipeline automation for global banking
-              engineering teams.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">Kubernetes</span>
-              <span class="tag">Python</span>
-              <span class="tag">Ansible</span>
-              <span class="tag">Jenkins</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects">
-      <div class="container">
-        <h2 class="section-title">Featured <span>Projects</span></h2>
-        <div class="section-divider"></div>
-        <div class="projects-grid">
-          <div class="project-card">
-            <h3>&#x2388; Istio mTLS Gateway Setup</h3>
-            <p>
-              End-to-end mTLS configuration for Istio ingress gateways on
-              Azure AKS, including certificate rotation automation and
-              access-log observability via Envoy filters.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">Istio</span>
-              <span class="tag">Envoy</span>
-              <span class="tag">AKS</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <h3>&#x1F9F0; GitLab Multi-Stage CI/CD</h3>
-            <p>
-              Reusable GitLab CI pipeline templates with dynamic environments,
-              Helm-based deployments, semantic versioning, and automated
-              release changelogs.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">GitLab CI</span>
-              <span class="tag">Helm</span>
-              <span class="tag">Semantic Release</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <h3>&#x1F512; Vault + Kubernetes Secrets</h3>
-            <p>
-              HashiCorp Vault integration with Kubernetes using the Vault Agent
-              Injector for zero-secret-in-YAML deployments across staging and
-              production namespaces.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">Vault</span>
-              <span class="tag">Kubernetes</span>
-              <span class="tag">Security</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <h3>&#x1F4CA; Platform Observability Stack</h3>
-            <p>
-              Prometheus + Grafana monitoring stack deployed via Helm on AKS,
-              with custom dashboards for pod resource utilisation, SLI/SLO
-              tracking, and alerting rules.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">Prometheus</span>
-              <span class="tag">Grafana</span>
-              <span class="tag">Helm</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <h3>&#x2601; Personal Portfolio</h3>
-            <p>
-              This very site! A lightweight, zero-dependency static HTML
-              portfolio deployed on GitHub Pages via a GitHub Actions pipeline
-              with Prettier formatting and ESLint checks.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">GitHub Actions</span>
-              <span class="tag">HTML/CSS</span>
-              <span class="tag">GitHub Pages</span>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <h3>&#x1F40D; Python DevOps Tooling</h3>
-            <p>
-              Python scripts for Kubernetes resource auditing, automated
-              namespace cost reporting, and Slack alerting integrations
-              for on-call teams.
-            </p>
-            <div class="timeline-tags">
-              <span class="tag">Python</span>
-              <span class="tag">Kubernetes API</span>
-              <span class="tag">Slack</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact">
-      <div class="container">
-        <h2 class="section-title">Get in <span>Touch</span></h2>
-        <div class="section-divider"></div>
-        <div class="contact-grid">
-          <a
-            class="contact-card"
-            href="https://github.com/shubhamj808"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div class="contact-icon">&#x1F4BB;</div>
-            <div class="contact-info">
-              <div class="label">GitHub</div>
-              <div class="value">shubhamj808</div>
-            </div>
-          </a>
-          <a class="contact-card" href="mailto:shubhamj808@gmail.com">
-            <div class="contact-icon">&#x2709;</div>
-            <div class="contact-info">
-              <div class="label">Email</div>
-              <div class="value">shubhamj808@gmail.com</div>
-            </div>
-          </a>
-          <a
-            class="contact-card"
-            href="https://linkedin.com/in/shubhamj808"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <div class="contact-icon">&#x1F517;</div>
-            <div class="contact-info">
-              <div class="label">LinkedIn</div>
-              <div class="value">shubhamj808</div>
-            </div>
-          </a>
-          <div class="contact-card">
-            <div class="contact-icon">&#x1F4CD;</div>
-            <div class="contact-info">
-              <div class="label">Location</div>
-              <div class="value">Pune, India</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <p>&copy; 2026 Shubham Jadhav &mdash; Built with HTML, CSS &amp; GitHub Actions</p>
-      </div>
-    </footer>
-  </body>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Shubham Jadhav - DevOps Engineer. 4+ years building cloud-native platforms on Azure & Kubernetes for UBS and Volkswagen.">
+<title>Shubham Jadhav - DevOps Engineer</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0a0e1a;
+  --surface: #131721;
+  --surface2: #1a1f2e;
+  --cyan: #00d4ff;
+  --cyan-dim: #0099cc;
+  --purple: #8b5cf6;
+  --text: #e2e8f0;
+  --text-dim: #94a3b8;
+  --green: #3fb950;
+  --border: #2d3748;
+}
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: var(--cyan); text-decoration: none; transition: 0.2s; }
+a:hover { color: var(--text); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+section { padding: 4rem 0; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; }
+
+/* Nav */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(10,14,26,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  z-index: 100;
+  padding: 1rem 0;
+}
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo { font-size: 1.2rem; font-weight: bold; color: var(--cyan); }
+.logo span { color: var(--text); }
+nav ul { display: flex; gap: 2rem; list-style: none; }
+nav a { color: var(--text-dim); font-size: 0.9rem; }
+nav a:hover, nav a.active { color: var(--cyan); }
+
+/* Hero */
+.hero { text-align: center; position: relative; }
+.status-badge {
+  display: inline-block;
+  background: var(--surface2);
+  border: 1px solid var(--green);
+  color: var(--green);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin-bottom: 2rem;
+}
+.hero h1 { font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; margin-bottom: 0.5rem; }
+.hero h1 .name { color: var(--text); }
+.hero h1 .surname { color: var(--cyan); }
+.hero .role {
+  font-size: 1.5rem;
+  color: var(--cyan);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.hero .role::before { content: '❯'; color: var(--green); }
+.hero .desc {
+  font-size: 1.1rem;
+  color: var(--text-dim);
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.8;
+}
+.hero .desc strong { color: var(--cyan); font-weight: 600; }
+.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+.btn {
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+  border: none;
+}
+.btn-primary {
+  background: linear-gradient(135deg, var(--cyan), var(--purple));
+  color: #fff;
+}
+.btn-secondary {
+  background: var(--surface2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+/* Section titles */
+.section-label {
+  display: inline-block;
+  background: var(--surface2);
+  border: 1px solid var(--cyan-dim);
+  color: var(--cyan);
+  padding: 0.3rem 1rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+.section-label::before { content: '▸ '; }
+.section-title { font-size: 2.5rem; margin-bottom: 1rem; }
+.section-title .highlight { color: var(--cyan); }
+
+/* About */
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+.about-text p { margin-bottom: 1rem; color: var(--text-dim); line-height: 1.8; }
+.about-text strong { color: var(--cyan); font-weight: 600; }
+.code-block {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  position: relative;
+}
+.code-block::before {
+  content: '~/.profile';
+  display: block;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2rem; }
+.stat-card {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+.stat-num { font-size: 2.5rem; font-weight: 900; color: var(--cyan); }
+.stat-label { font-size: 0.85rem; color: var(--text-dim); margin-top: 0.5rem; }
+
+/* Timeline */
+.timeline { position: relative; padding-left: 2.5rem; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 8px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2.1rem;
+  top: 1.5rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--cyan);
+  border: 3px solid var(--bg);
+}
+.company-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--surface2);
+  border: 1px solid var(--cyan-dim);
+  color: var(--cyan);
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.timeline-date {
+  display: inline-block;
+  background: var(--surface2);
+  border: 1px solid var(--green);
+  color: var(--green);
+  padding: 0.2rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+  margin-bottom: 1rem;
+}
+.timeline-title { font-size: 1.3rem; margin-bottom: 0.5rem; }
+.timeline-subtitle { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem; }
+.timeline-item ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+.timeline-item li { color: var(--text-dim); margin-bottom: 0.5rem; }
+.timeline-item li::marker { content: '▹ '; color: var(--cyan); }
+.tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tech-tag {
+  background: var(--surface2);
+  border: 1px solid var(--purple);
+  color: var(--purple);
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.75rem;
+}
+
+/* Skills */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.skill-category {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.skill-category h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.skill-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.skill-item {
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 0.4rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.85rem;
+}
+
+/* Certs */
+.certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+.cert-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+}
+.cert-badge {
+  width: 80px;
+  height: 80px;
+  background: var(--surface2);
+  border: 2px solid var(--cyan);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  font-size: 2rem;
+}
+.cert-title { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.cert-issuer { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 0.5rem; }
+.cert-status {
+  display: inline-block;
+  background: var(--surface2);
+  border: 1px solid var(--green);
+  color: var(--green);
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+}
+
+/* Education */
+.education-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 1.5rem; }
+.edu-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.edu-level {
+  display: inline-block;
+  background: var(--surface2);
+  border: 1px solid var(--cyan-dim);
+  color: var(--cyan);
+  padding: 0.2rem 0.6rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.edu-title { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.edu-school { color: var(--text-dim); font-size: 0.9rem; }
+
+/* Contact */
+.contact-intro {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  text-align: center;
+  color: var(--text-dim);
+}
+.contact-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; margin-bottom: 3rem; }
+.contact-link {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: 0.3s;
+}
+.contact-link:hover { border-color: var(--cyan); transform: translateY(-2px); }
+.contact-icon { font-size: 1.5rem; }
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.form-header {
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+.form-group { margin-bottom: 1rem; }
+.form-label {
+  display: block;
+  color: var(--cyan);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+.form-label::before { content: '$ '; }
+input, textarea {
+  width: 100%;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.8rem;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+input:focus, textarea:focus { outline: none; border-color: var(--cyan); }
+textarea { resize: vertical; min-height: 120px; }
+.submit-btn {
+  width: 100%;
+  background: var(--cyan);
+  color: var(--bg);
+  padding: 0.8rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.submit-btn:hover { opacity: 0.9; }
+.submit-btn::before { content: '▶ '; }
+
+/* Footer */
+footer {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+.footer-links { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
+
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .nav-content ul { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+<div class="nav-content">
+<div class="logo"><span>shubham@devops:~$</span></div>
+<ul>
+<li><a href="#about">about</a></li>
+<li><a href="#experience">experience</a></li>
+<li><a href="#skills">skills</a></li>
+<li><a href="#certs">certs</a></li>
+<li><a href="#education">education</a></li>
+<li><a href="#contact">contact</a></li>
+</ul>
+</div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+<div class="container">
+<div class="status-badge">● Available for opportunities</div>
+<h1><span class="name">Shubham</span> <span class="surname">Jadhav</span></h1>
+<div class="role">Platform Engineer</div>
+<p class="desc">From connected cars to global banking — engineering infrastructure that scales. <strong>4+ years</strong> building cloud-native platforms on <strong>Azure & Kubernetes</strong> for <strong>UBS</strong> and <strong>Volkswagen</strong>.</p>
+<div class="cta-buttons">
+<a href="#experience" class="btn btn-primary">▶ View Experience</a>
+<a href="#contact" class="btn btn-secondary">./connect.sh</a>
+</div>
+</div>
+</section>
+
+<!-- About -->
+<section id="about">
+<div class="container">
+<span class="section-label">ABOUT ME</span>
+<h2 class="section-title">Engineering the <span class="highlight">infrastructure.</span></h2>
+<div class="about-grid">
+<div class="about-text">
+<p>DevOps Engineer with <strong>4+ years</strong> building cloud-native infrastructure on <strong>Azure</strong> and <strong>Kubernetes</strong> at enterprise scale. Currently at <strong>EPAM Systems</strong>, supporting <strong>UBS</strong> — one of the world's largest investment banks — with mission-critical platform engineering.</p>
+<p>Previously engineered the DevOps backbone of <strong>Volkswagen's connected-car platform (ODP)</strong>, impacting <strong>40 million vehicles</strong> globally with 99.9% uptime and multi-region failover architecture.</p>
+<p>Expert in <strong>CI/CD pipelines, Terraform IaC, container orchestration</strong>, and full-stack observability. Holder of <strong>6 active certifications</strong> spanning Azure, Kubernetes, and HashiCorp ecosystems — with two company awards and an international assignment to Germany.</p>
+<div class="stats">
+<div class="stat-card"><div class="stat-num">4+</div><div class="stat-label">Years Experience</div></div>
+<div class="stat-card"><div class="stat-num">40M</div><div class="stat-label">Vehicles Impacted</div></div>
+<div class="stat-card"><div class="stat-num">6</div><div class="stat-label">Active Certifications</div></div>
+<div class="stat-card"><div class="stat-num">99.9%</div><div class="stat-label">Uptime Delivered</div></div>
+</div>
+</div>
+<div class="code-block">
+<pre>const engineer = {
+  name: "Shubham Jadhav",
+  role: "DevOps Engineer",
+  company: "EPAM Systems",
+  client: "UBS",
+  cloud: "Azure",
+  certs: 6,
+  uptime: "99.9%",
+};
+// Pune 🇮🇳</pre>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Experience -->
+<section id="experience">
+<div class="container">
+<span class="section-label">CAREER</span>
+<h2 class="section-title">Where I've <span class="highlight">deployed.</span></h2>
+<div class="timeline">
+<div class="timeline-item">
+<span class="company-badge">EP → UBS</span>
+<span class="timeline-date">Nov 2024 — Present</span>
+<h3 class="timeline-title">Systems Engineer</h3>
+<p class="timeline-subtitle">EPAM Systems · Client: UBS (Investment Banking) · Pune</p>
+<ul>
+<li>Supporting cloud infrastructure & K8s deployments for UBS on Azure, ensuring HA for financial workloads</li>
+<li>CI/CD pipelines via Azure DevOps for regulated banking environments — rapid, auditable releases</li>
+<li>IaC with Terraform and Azure Bicep across multi-environment deployments</li>
+<li>Platform security: Trivy vulnerability scanning + SonarQube quality gates</li>
+<li>Observability: Grafana, Prometheus, Azure Monitor for proactive incident response</li>
+<li>DevSecOps best practices in highly regulated investment banking context</li>
+</ul>
+<div class="tech-tags">
+<span class="tech-tag">Azure</span>
+<span class="tech-tag">K8s</span>
+<span class="tech-tag">Terraform</span>
+<span class="tech-tag">Azure DevOps</span>
+<span class="tech-tag">Grafana</span>
+<span class="tech-tag">Trivy</span>
+<span class="tech-tag">SonarQube</span>
+</div>
+</div>
+
+<div class="timeline-item">
+<span class="company-badge">VT → VW</span>
+<span class="timeline-date">Sep 2023 — Oct 2024</span>
+<h3 class="timeline-title">Senior Systems Engineer</h3>
+<p class="timeline-subtitle">Valtech · Client: Volkswagen (One Digital Platform) · Pune</p>
+<ul>
+<li>Spearheaded DevOps for VW ODP — 40M connected vehicles, 99.9% uptime, multi-region failover</li>
+<li>CI/CD pipelines with Azure DevOps for microservices across demo, approval & production</li>
+<li>Led R&D POC setups: Docker containerization + AKS deployment in under 1 month</li>
+<li>Terraform + GitHub Actions automation, cutting deployment time by 30%</li>
+<li>IaC via ARM Templates & Bicep; 25% monitoring accuracy boost via OpenTelemetry + Grafana</li>
+<li>L2 incident resolution; 20% team performance increase; two awards + Germany assignment</li>
+</ul>
+<div class="tech-tags">
+<span class="tech-tag">Azure DevOps</span>
+<span class="tech-tag">AKS</span>
+<span class="tech-tag">Terraform</span>
+<span class="tech-tag">GitHub Actions</span>
+<span class="tech-tag">Docker</span>
+<span class="tech-tag">OpenTelemetry</span>
+</div>
+</div>
+
+<div class="timeline-item">
+<span class="company-badge">CY</span>
+<span class="timeline-date">Jul 2021 — Sep 2023</span>
+<h3 class="timeline-title">Software Engineer</h3>
+<p class="timeline-subtitle">Cybage Software Pvt. Ltd. · Pune</p>
+<ul>
+<li>CI/CD with GitHub Actions & Azure DevOps — 25% faster deployments</li>
+<li>Scalable web apps: Spring Boot, ASP.NET, ReactJS with Maven/MSBuild/NPM</li>
+<li>Serverless architecture: Azure Functions + Service Bus for event-driven processing</li>
+<li>Terraform + Bicep + ARM automation — 30% less manual provisioning</li>
+<li>Docker/Podman on AKS — 99.9% availability</li>
+<li>ELK Stack monitoring — 40% faster incident resolution</li>
+</ul>
+<div class="tech-tags">
+<span class="tech-tag">GitHub Actions</span>
+<span class="tech-tag">Docker</span>
+<span class="tech-tag">Azure Functions</span>
+<span class="tech-tag">Terraform</span>
+<span class="tech-tag">ELK Stack</span>
+<span class="tech-tag">K8s</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Skills -->
+<section id="skills">
+<div class="container">
+<span class="section-label">EXPERTISE</span>
+<h2 class="section-title">Skills & <span class="highlight">Technologies.</span></h2>
+<div class="skills-grid">
+<div class="skill-category">
+<h3>☁ Cloud Platforms</h3>
+<div class="skill-list">
+<span class="skill-item">Microsoft Azure</span>
+<span class="skill-item">Azure DevOps</span>
+<span class="skill-item">AKS</span>
+</div>
+</div>
+<div class="skill-category">
+<h3>☸️ Containers & Orchestration</h3>
+<div class="skill-list">
+<span class="skill-item">Docker</span>
+<span class="skill-item">Kubernetes</span>
+<span class="skill-item">Helm</span>
+<span class="skill-item">Podman</span>
+</div>
+</div>
+<div class="skill-category">
+<h3>⬤ Infrastructure as Code</h3>
+<div class="skill-list">
+<span class="skill-item">Terraform</span>
+<span class="skill-item">ARM Templates</span>
+<span class="skill-item">Azure Bicep</span>
+</div>
+</div>
+<div class="skill-category">
+<h3>⚙ CI/CD & Version Control</h3>
+<div class="skill-list">
+<span class="skill-item">Azure DevOps Pipelines</span>
+<span class="skill-item">GitHub Actions</span>
+<span class="skill-item">GitHub</span>
+<span class="skill-item">Bitbucket</span>
+<span class="skill-item">Jenkins</span>
+</div>
+</div>
+<div class="skill-category">
+<h3>⚖ Load Balancing & Traffic</h3>
+<div class="skill-list">
+<span class="skill-item">Azure Traffic Manager</span>
+<span class="skill-item">App Gateway</span>
+<span class="skill-item">Front Door</span>
+<span class="skill-item">NGINX</span>
+</div>
+</div>
+<div class="skill-category">
+<h3>📊 Monitoring & Observability</h3>
+<div class="skill-list">
+<span class="skill-item">Grafana</span>
+<span class="skill-item">Prometheus</span>
+<span class="skill-item">Grafana Alloy</span>
+<span class="skill-item">Loki</span>
+<span class="skill-item">Tempo</span>
+<span class="skill-item">OpenTelemetry</span>
+<span class="skill-item">Dynatrace</span>
+<span class="skill-item">ELK Stack</span>
+<span class="skill-item">Azure Monitor</span>
+<span class="skill-item">App Insights</span>
+</div>
+</div>
+<div class="skill-category">
+<h3>🔒 Security & Quality</h3>
+<div class="skill-list">
+<span class="skill-item">Trivy</span>
+<span class="skill-item">SonarQube</span>
+</div>
+</div>
+<div class="skill-category">
+<h3>💻 Programming & Dev</h3>
+<div class="skill-list">
+<span class="skill-item">Java</span>
+<span class="skill-item">Spring Boot</span>
+<span class="skill-item">React</span>
+<span class="skill-item">Bash/Shell</span>
+<span class="skill-item">PowerShell</span>
+<span class="skill-item">Kafka</span>
+</div>
+</div>
+<div class="skill-category">
+<h3>🏗 Architecture Patterns</h3>
+<div class="skill-list">
+<span class="skill-item">Microservices</span>
+<span class="skill-item">Serverless</span>
+<span class="skill-item">Event-Driven</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Certifications -->
+<section id="certs">
+<div class="container">
+<span class="section-label">CREDENTIALS</span>
+<h2 class="section-title">Verified <span class="highlight">expertise.</span></h2>
+<div class="certs-grid">
+<div class="cert-card">
+<div class="cert-badge">AZ</div>
+<h3 class="cert-title">Azure Administrator Associate (AZ-104)</h3>
+<p class="cert-issuer">Microsoft</p>
+<span class="cert-status">✓ Valid till Sep 2026</span>
+</div>
+<div class="cert-card">
+<div class="cert-badge">AZ</div>
+<h3 class="cert-title">DevOps Engineer Expert (AZ-400)</h3>
+<p class="cert-issuer">Microsoft</p>
+<span class="cert-status">✓ Valid till Sep 2026</span>
+</div>
+<div class="cert-card">
+<div class="cert-badge">AZ</div>
+<h3 class="cert-title">Azure Fundamentals (AZ-900)</h3>
+<p class="cert-issuer">Microsoft</p>
+<span class="cert-status">✓ Issued Jun 2022</span>
+</div>
+<div class="cert-card">
+<div class="cert-badge">TF</div>
+<h3 class="cert-title">Terraform Associate (003)</h3>
+<p class="cert-issuer">HashiCorp</p>
+<span class="cert-status">✓ Issued Oct 2022</span>
+</div>
+<div class="cert-card">
+<div class="cert-badge">K8s</div>
+<h3 class="cert-title">Certified Kubernetes Administrator (CKA)</h3>
+<p class="cert-issuer">CNCF / Linux Foundation</p>
+<span class="cert-status">✓ Valid till Dec 2026</span>
+</div>
+<div class="cert-card">
+<div class="cert-badge">K8s</div>
+<h3 class="cert-title">Certified Kubernetes App Developer (CKAD)</h3>
+<p class="cert-issuer">CNCF / Linux Foundation</p>
+<span class="cert-status">✓ Valid till Dec 2025</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Education -->
+<section id="education">
+<div class="container">
+<span class="section-label">ACADEMIC</span>
+<h2 class="section-title">Education <span class="highlight">foundation.</span></h2>
+<div class="education-grid">
+<div class="edu-card">
+<span class="edu-level">PG-Diploma</span>
+<h3 class="edu-title">Advanced Computing (CDAC)</h3>
+<p class="edu-school">Sunbeam Institute of Information Technology, Pune</p>
+</div>
+<div class="edu-card">
+<span class="edu-level">Bachelor of Engineering</span>
+<h3 class="edu-title">Electronics & Telecommunication Engineering</h3>
+<p class="edu-school">Smt. Kashibai Navale College of Engineering, SPPU</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+<div class="container">
+<span class="section-label">CONNECT</span>
+<h2 class="section-title">Let's build <span class="highlight">together.</span></h2>
+<p class="contact-intro">Open to senior DevOps / Platform Engineering roles, consulting, or a great conversation about cloud & Kubernetes.</p>
+<div class="contact-grid">
+<a href="https://www.linkedin.com/in/shubham-jadhav-2429421b3/" target="_blank" class="contact-link">
+<span class="contact-icon">🔗</span>
+<div><div style="font-size:0.75rem;color:var(--text-dim)">LinkedIn</div><div>shubham-jadhav</div></div>
+</a>
+<a href="https://github.com/shubhamj808" target="_blank" class="contact-link">
+<span class="contact-icon">💻</span>
+<div><div style="font-size:0.75rem;color:var(--text-dim)">GitHub</div><div>shubhamj808</div></div>
+</a>
+</div>
+<div class="contact-form">
+<div class="form-header">compose-message.sh</div>
+<div class="form-group">
+<label class="form-label">your_name</label>
+<input type="text" placeholder="John Doe" />
+</div>
+<div class="form-group">
+<label class="form-label">your_email</label>
+<input type="email" placeholder="john@example.com" />
+</div>
+<div class="form-group">
+<label class="form-label">message</label>
+<textarea placeholder="Tell me about your project..."></textarea>
+</div>
+<button class="submit-btn">deploy message</button>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer>
+<div class="container">
+<p>Shubham Jadhav · DevOps Engineer</p>
+<p>© 2026 · Built with ❤️ and GitHub Actions</p>
+<div class="footer-links">
+<a href="https://www.linkedin.com/in/shubham-jadhav-2429421b3/" target="_blank">LinkedIn</a>
+<a href="https://github.com/shubhamj808" target="_blank">GitHub</a>
+</div>
+</div>
+</footer>
+
+</body>
 </html>
