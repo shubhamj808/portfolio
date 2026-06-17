@@ -388,13 +388,6 @@ footer {
   .about-grid { grid-template-columns: 1fr; }
   .nav-content ul { display: none; }
 }
-</style>
-</head>
-<body>
-
-    <!-- Animated Background Canvas -->
-       <canvas id="particles-canvas"></canvas>
-  
 /* Animated Background */
 #particles-canvas {
   position: fixed;
@@ -418,7 +411,15 @@ footer {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
-}
+
+
+</style>
+</head>
+<body>
+
+    <!-- Animated Background Canvas -->
+       <canvas id="particles-canvas"></canvas>
+  
 <!-- Nav -->
 <nav>
 <div class="nav-content">
@@ -858,5 +859,9 @@ footer {
       canvas.height = window.innerHeight;
     });
      </script>
+git add docs/index.html
+git rebase --continue
+git push origin main
+
 </body>
 </html>
