@@ -1,0 +1,8 @@
+# Ignore static output folder
+docs/
+
+# Ignore dist folder
+dist/
+
+# Ignore generated workflow files added via GitHub UI
+.github/workflows/deploy-static-v3.yml
