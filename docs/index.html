@@ -420,6 +420,101 @@ footer {
   to { opacity: 1; transform: translateY(0); }
 
 
+  /* Cursor blink animation */
+.cursor {
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  nav {
+    padding: 1rem 0;
+  }
+  
+  .nav-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  
+  nav a {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .role {
+    font-size: 1.2rem;
+  }
+  
+  .desc {
+    font-size: 0.95rem;
+  }
+  
+  .container {
+    padding: 2rem 1rem;
+  }
+  
+  .about-grid,
+  .timeline,
+  .skills-grid,
+  .certs-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* Sticky Navigation */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  background: rgba(2, 6, 23, 0.9);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Enhanced Animations */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button hover effects */
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 217, 255, 0.4);
+  transition: all 0.3s ease;
+}
+
 </style>
 </head>
 <body>
@@ -447,7 +542,7 @@ footer {
 <div class="container">
 <div class="status-badge">● Available for opportunities</div>
 <h1><span class="name">Shubham</span> <span class="surname">Jadhav</span></h1>
-<div class="role">Platform Engineer</div>
+      <div class="role">❯ <span id="role-text"></span><span class="cursor">_</span></div>
 <p class="desc">From connected cars to global banking — engineering infrastructure that scales. <strong>4+ years</strong> building cloud-native platforms on <strong>Azure & Kubernetes</strong> for <strong>UBS</strong> and <strong>Volkswagen</strong>.</p>
 <div class="cta-buttons">
 <a href="#experience" class="btn btn-primary">▶ View Experience</a>
@@ -865,12 +960,43 @@ footer {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     });
+
+        // Role Rotation Animation
+    const roles = ['Platform Engineer', 'DevOps Engineer', 'Cloud Engineer', 'AI DevOps Engineer'];
+    let currentRoleIndex = 0;
+    let currentCharIndex = 0;
+    let isDeleting = false;
+    const roleTextElement = document.getElementById('role-text');
+    
+    function typeRole() {
+      const currentRole = roles[currentRoleIndex];
+      
+      if (!isDeleting) {
+        roleTextElement.textContent = currentRole.substring(0, currentCharIndex + 1);
+        currentCharIndex++;
+        
+        if (currentCharIndex === currentRole.length) {
+          isDeleting = true;
+          setTimeout(typeRole, 2000); // Pause before deleting
+          return;
+        }
+      } else {
+        roleTextElement.textContent = currentRole.substring(0, currentCharIndex - 1);
+        currentCharIndex--;
+        
+        if (currentCharIndex === 0) {
+          isDeleting = false;
+          currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+          setTimeout(typeRole, 500); // Pause before next role
+          return;
+        }
+      }
+      
+      setTimeout(typeRole, isDeleting ? 50 : 100);
+    }
+    
+    // Start the animation
+    typeRole();
      </script>
-git add docs/index.html
-git rebase --continue
-git push origin main
-
-git push origin main
-
 </body>
 </html>
